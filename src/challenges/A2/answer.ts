@@ -9,11 +9,33 @@
  */
 
 // ↓ uncomment bellow lines and add your response!
-/*
+
 export default function ({ groups }: { groups: Group[] }): GroupWithSills[] {
-    return [];
+
+    
+   const result:GroupWithSills[] = []
+   
+   groups.map((group) => {
+        let skillsGroup :string[]= []
+        for (let student of group.students){;
+            skillsGroup = skillsGroup.concat(student.skills).sort()       
+        }
+
+        const clean = Array.from(new Set(skillsGroup))
+
+       const GroupWithSkills:GroupWithSills = {
+        ...group,
+        skills: clean
+       }
+
+       result.push(GroupWithSkills)
+        
+    })
+     
+
+    return result
 }
-*/
+
 
 // used interfaces, do not touch
 interface Student {

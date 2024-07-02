@@ -7,11 +7,24 @@
  */
 
 // ↓ uncomment bellow lines and add your response!
-/*
+
 export default function ({ students }: { students: Student[] }): Student[] {
-    return [];
+    const result = students.sort((a,b) => {
+        if (a.age !== b.age){
+            return a.age - b.age
+        }
+        if(a.name < b.name) {
+            return -1
+        }
+        if(a.name > b.name) {
+            return 1
+        }
+        return 0
+    })
+
+    return result as Student[]
 }
-*/
+
 
 // used interfaces, do not touch
 export interface Student {
