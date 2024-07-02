@@ -10,11 +10,30 @@
 */
 
 // ↓ uncomment bellow lines and add your response!
-/*
+
 export default function ({ lastActivityDatetime, messages } : { lastActivityDatetime: string, messages: Message[] }): MessageWithUnread[] {
-    return [];
+
+    const result:MessageWithUnread[] = []
+    
+    messages.map((message) => {
+        const unread = {
+            ...message,
+            unread: message.sentAt > lastActivityDatetime ? true : false
+        }
+
+        result.push(unread)
+    })
+
+    result.sort((a,b) => {
+        const dateA = new Date(a.sentAt).getTime()
+        const dateB = new Date(b.sentAt).getTime()
+
+        return dateA - dateB
+    } )
+
+    return result;
 }
-*/
+
 
 // used interfaces, do not touch
 export interface Message {
